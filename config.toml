@@ -15,7 +15,7 @@ theme = "hyde-hyde"
 [params]
     author = "Trenton Pulsipher"
     title = "Title"
-    # description = "..."
+    description = "Data Scientist"
     authorimage = "/img/hugo.png"
     dateformat = "Jan 2, 2006"
     highlightjs = true
@@ -25,14 +25,15 @@ theme = "hyde-hyde"
 
 ## Social Accounts
 [params.social]
-    github = "<username>"
+    github = "trentonpulsipher"
+#    github = "HSPS-DataScience"
 #    instagram = "<username>"
 #    xing = "<username>"
-    linkedin = "<username>"
+    linkedin = "tcpulsipher"
 #    twitter = "<username>"
 #    facebook = "<username>"
 #    stackoverflow = "<username>"
-    email = "your-email@example.com"
+    email = "tcpulsipher@hotmail.com"
 
 ## Main Menu
 [[menu.main]]
@@ -45,4 +46,9 @@ theme = "hyde-hyde"
     identifier = "about"
     weight = 200
     url = "/about/"
+[[menu.main]]
+    name = "Resume"
+    identifier = "resume"
+    weight = 200
+    url = "/resume/"
 

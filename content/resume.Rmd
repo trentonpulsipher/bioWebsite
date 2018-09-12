@@ -1,0 +1,7 @@
+---
+title: "resume"
+author: "Trenton"
+date: "September 12, 2018"
+output: html_document
+---
+
