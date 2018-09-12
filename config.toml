@@ -50,5 +50,5 @@ theme = "hyde-hyde"
     name = "Resume"
     identifier = "resume"
     weight = 200
-    url = "/resume/"
+    url = "/TrentonPulsipher-resume.pdf"
 
