@@ -38,7 +38,8 @@ Created web-based tools to share statistical modeling visualizations with the sa
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/about/</guid>
-      <description></description>
+      <description>I’m a data scientist / statistician with over 10 years of experience analyzing everything from customer attrition to ovarian cancer biomarkers to weather modeling to protein pKa predictions to power grid load demand to organic lettuce sales. I primarily use R, which enables me to use RMarkdown, various wrappers for JavaScript plotting libraries (rBokeh, Leaflet, trelliscopejs, etc.), and an appropriate backend like Hadoop or Spark.
+Outside of work I try to enjoy supporting my wife in our effort to fix up our small old house while pretending to be country farmers on our acre property (lots of fruit and nut trees, and chickens).</description>
     </item>
     
   </channel>
