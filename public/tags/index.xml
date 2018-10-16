@@ -12,11 +12,20 @@
     
     
     <item>
-      <title>Shinyapps.io</title>
-      <link>/tags/shinyapps.io/</link>
+      <title>Shiny</title>
+      <link>/tags/shiny/</link>
       <pubDate>Mon, 15 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>/tags/shinyapps.io/</guid>
+      <guid>/tags/shiny/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Time Series</title>
+      <link>/tags/time-series/</link>
+      <pubDate>Mon, 15 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/time-series/</guid>
       <description></description>
     </item>
     

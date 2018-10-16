@@ -18,7 +18,7 @@
   </url>
   
   <url>
-    <loc>/categories/examplecode/</loc>
+    <loc>/categories/examples/</loc>
     <lastmod>2018-10-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -30,13 +30,19 @@
   </url>
   
   <url>
-    <loc>/tags/shinyapps.io/</loc>
+    <loc>/tags/shiny/</loc>
     <lastmod>2018-10-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/</loc>
+    <lastmod>2018-10-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/time-series/</loc>
     <lastmod>2018-10-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>

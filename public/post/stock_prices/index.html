@@ -108,7 +108,7 @@
             in
             
             
-                <a class="meta" href="/categories/examplecode">EXAMPLECODE</a>
+                <a class="meta" href="/categories/examples">EXAMPLES</a>
                 
             
         
@@ -120,7 +120,9 @@
             <br/>
              <i class="fas fa-tags"></i>
             
-            <a class="meta" href="/tags/shinyapps.io">shinyapps.io</a>
+            <a class="meta" href="/tags/shiny">shiny</a> 
+        
+            <a class="meta" href="/tags/time-series">time-series</a>
         
       
       
@@ -144,11 +146,11 @@
 <p>Notes</p>
 
 <ol>
-<li>One could easily switch out the forecast model for any other time-series (e.g. Arima) or random walk type model more suitable to predicting stock prices.</li>
+<li>One could easily switch out the forecast model for any other time-series (e.g. Arima) or random walk type model more suitable to predicting stock prices. I could also allow the forecast to be an input (instead of 30 days).</li>
 <li>One could easily add functionality to the input section to subset the data by time or stock categories (e.g. Tech, Energy).</li>
 <li>One could switch out the plotting library (I used Bokeh and GGplot2).</li>
 <li>One could exchange the dataset quite easily - I should have done this as I didn&rsquo;t realize the Quandl API only returned data up through March 2018 (definitely not recent). Also I probably should have used Python to grab the data, and will look into that this week on my own. This is a great example to use as I learn Python.</li>
-<li>There are other tools (e.g. markdown, trelliscope) that facilitate interactive reporting and analysis of data. I have examples of those on GitHub and could share if needed. Shiny seemed like the best way to approach this request, otherwise a Jupyter Notebook for a Python display may be appropriate but surely not as robust as a shiny app.</li>
+<li>There are other tools (e.g. markdown, trelliscope) that facilitate interactive reporting and analysis of data. I have examples of those on GitHub and could share if needed. Shiny seemed like the best way to approach this request, otherwise a Jupyter Notebook for a Python display may be appropriate, but surely not as robust as a shiny app.</li>
 </ol>
 
 </div>
