@@ -17,7 +17,9 @@
       <pubDate>Mon, 15 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>/post/stock_prices/</guid>
-      <description>Stock Prices App</description>
+      <description>Stock Prices App
+The link above will take you to my shinyapps.io page where I have deployed a R/Shiny app. The app is rough and basic and reflects only a few hours of my time (1&amp;frasl;2 day) to make, but should meet the requirements - especially if you imagine all the variations available and noted at the bottom of this post.
+The left portion of the app allows the user to select the stock ticker of interest.</description>
     </item>
     
   </channel>

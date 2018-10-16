@@ -125,11 +125,31 @@
       
       
       <br/>
-      <i class="fas fa-clock"></i> 1 min read 
+      <i class="fas fa-clock"></i> 2 min read 
       </span>  
   </div>    
   
   <p><a href="https://trentonpulsipher.shinyapps.io/stock_prices/">Stock Prices App</a></p>
+
+<p>The link above will take you to my shinyapps.io page where I have deployed a R/Shiny app. The app is rough and basic and reflects only a few hours of my time (<sup>1</sup>&frasl;<sub>2</sub> day) to make, but should meet the requirements - especially if you imagine all the variations available and noted at the bottom of this post.</p>
+
+<p>The left portion of the app allows the user to select the stock ticker of interest. Plots and the data are then reactively displayed in the main panel. The three tabs displaying data are:</p>
+
+<ul>
+<li>The historical time-series of stock prices plotted using Bokeh (an interactive JavaScript plotting library) with a point for every close price.</li>
+<li>A plot of a 30-day forecast generated from the most recent three years of data using a basic exponential time-series model.</li>
+<li>A subset (only Date, Closing Price, and Volume) of columns in the data.</li>
+</ul>
+
+<p>Notes</p>
+
+<ol>
+<li>One could easily switch out the forecast model for any other time-series (e.g. Arima) or random walk type model more suitable to predicting stock prices.</li>
+<li>One could easily add functionality to the input section to subset the data by time or stock categories (e.g. Tech, Energy).</li>
+<li>One could switch out the plotting library (I used Bokeh and GGplot2).</li>
+<li>One could exchange the dataset quite easily - I should have done this as I didn&rsquo;t realize the Quandl API only returned data up through March 2018 (definitely not recent). Also I probably should have used Python to grab the data, and will look into that this week on my own. This is a great example to use as I learn Python.</li>
+<li>There are other tools (e.g. markdown, trelliscope) that facilitate interactive reporting and analysis of data. I have examples of those on GitHub and could share if needed. Shiny seemed like the best way to approach this request, otherwise a Jupyter Notebook for a Python display may be appropriate but surely not as robust as a shiny app.</li>
+</ol>
 
 </div>
             <div class="footer">
