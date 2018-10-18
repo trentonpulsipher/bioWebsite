@@ -139,14 +139,14 @@
 
 <ul>
 <li>The historical time-series of stock prices plotted using Bokeh (an interactive JavaScript plotting library) with a point for every close price.</li>
-<li>A plot of a forecast generated from the most recent three years of data using a basic exponential time-series model, <a href="https://business-science.github.io/sweep/">see the sweep package</a>.</li>
+<li>A plot of a forecast generated from the most recent three years of data using a basic exponential time-series model, <a href="https://business-science.github.io/sweep/">see the sweep package</a> and a random walk (no drift) model.</li>
 <li>A subset (only Date, Closing Price, and Volume) of columns in the data.</li>
 </ul>
 
 <p>Notes</p>
 
 <ol>
-<li>One could easily switch out the forecast model for any other time-series (e.g. Arima) or random walk type model more suitable to predicting stock prices. Unfortunately the sweep package I chose is not really providing any value to the forecast (straight static line). It would be a much better fit for other more seasonal time series (opposed to the random walk nature of stock prices).</li>
+<li>One could easily switch out the forecast model for any other time-series (e.g. Arima) more suitable to predicting stock prices. Unfortunately the sweep package I chose is not really providing any value to the forecast (straight static line). It would be a much better fit for other more seasonal time series (opposed to the random walk with drift nature of stock prices).</li>
 <li>One could easily add functionality to the input section to subset the data by time or stock categories (e.g. Tech, Energy).</li>
 <li>One could switch out the plotting library (I used Bokeh and GGplot2).</li>
 <li>One could exchange the dataset quite easily - I should have done this as I didn&rsquo;t realize the Quandl API only returned data up through March 2018 (definitely not recent). Also I probably should have used Python to grab the data, and will look into that this week on my own. This is a great example to use as I learn Python.</li>
