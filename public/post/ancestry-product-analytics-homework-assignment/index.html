@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" class="wf-firasans-n4-active wf-active">
+	<head>
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Enable responsiveness on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    
+    
+    <meta name="generator" content="Hugo 0.48" />
+    
+    <title>Ancestry Product Analytics Homework Assignment &middot; Trenton Pulsipher</title>
+    <meta content="Ancestry Product Analytics Homework Assignment - Trenton Pulsipher" property="og:title">
+    <meta content=" - " property="og:description">
+    <!-- CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i|Roboto+Mono:300,300i,400,400i" rel="stylesheet">
+    <link rel="stylesheet" href="/css/print.css" media="print">
+    <link rel="stylesheet" href="/css/poole.css">
+    <link rel="stylesheet" href="/css/hyde.css">
+    <!-- Font-Awesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+    <!-- highlight.js-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <!-- Customised CSS -->
+    <link rel="stylesheet" href="/css/custom.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+
+	</head>
+    <body>
+        <div class="sidebar">
+	<div class="container text-center sidebar-sticky">
+		<div class="sidebar-about text-center">
+			<a href="/"><h1 class="brand">Trenton Pulsipher</h1></a>
+			 <img src="/img/PulsipherTrenton.jpg" alt="Author Image" class="img-circle headshot center"> 
+			<p class="lead">
+				 Data Scientist 
+			</p>
+		</div>
+		
+<div>
+	<ul class="sidebar-nav">
+		
+		
+				<li>
+					<a href="/post/"> <span>Posts</span></a>
+				</li>
+				<li>
+					<a href="/about/"> <span>About</span></a>
+				</li>
+				<li>
+					<a href="/trentonpulsipher-resume.pdf"> <span>Resume</span></a>
+				</li>
+		</li>
+	</ul>
+</div>
+
+        <p>
+		<section class="row text-center">
+	
+	
+	
+	&nbsp;<a href="https://github.com/trentonpulsipher"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	&nbsp;<a href="https://linkedin.com/in/tcpulsipher"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	&nbsp;<a href="mailto:tcpulsipher@hotmail.com"><i class="fas fa-at fa-lg" aria-hidden="true"></i></a>
+	
+</section>
+
+        </p>
+		<p class="copyright">&copy; 2018 Trenton Pulsipher.
+        <a href="https://creativecommons.org/licenses/by/4.0">Some Rights Reserved</a>.<br/>Built with <a href="https://gohugo.io/">Hugo</a> &amp; <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+        </p>
+	</div>
+	<div>
+	</div>
+</div>
+
+        <div class="content container">
+            <div class="post">
+  <h1>Ancestry Product Analytics Homework Assignment</h1>
+  
+  <div class="col-sm-12 col-md-12">
+    <span class="text-left post-date meta">
+            
+       
+        <i class="fas fa-calendar-alt"></i> Nov 15, 2018
+      
+      
+      
+      
+      <br/>
+      <i class="fas fa-clock"></i> 5 min read 
+      </span>  
+  </div>    
+  
+  <p>The <a href="ManagerProductAnalyticsHomeworkAssignment.pdf">homework assignment document</a> shared with me contained the following questions:</p>
+<ol style="list-style-type: decimal">
+<li>Define the problem: What is the cross-sell status today based on the dataset? For example, what fraction of the observed users cross-sell to subscription? Perform any cleaning, exploratory analysis, and/or visualizations to use the provided data for this analysis (a few sentences/plots describing your approach will suffice).</li>
+<li>Discuss your analytics plan/steps to derive insights, identify opportunities, and recommend any optimization. How Ancestry might leverage the insights gained from the analytics deliverable to improve?</li>
+<li>If you need to design an analytical framework to learn the impact of the abovementioned insights iteratively, what experimentation method would you use to verify the recommendations:
+<ul>
+<li>How would you set up the experiment? Test vs. Control or other.</li>
+<li>What data or information is necessary to determine the sample size and duration of the experiment? Which metrics would you plan to track that define performance of the test?</li>
+<li>What method would you use to analyze the test results? Why?</li>
+<li>Based on your method, when would you be able to say that we can go ahead launch the new product?</li>
+</ul></li>
+</ol>
+<div id="define-the-problem-and-determine-current-cross-sell-state" class="section level3">
+<h3>1. Define the problem and determine current cross-sell state</h3>
+<p>My initial look at the data can be found <a href="data_discovery_ancestryTest.html">here</a> or at <a href="https://github.com/trentonpulsipher/ancestryTest/blob/master/R_scripts/data_discovery_ancestryTest.html" class="uri">https://github.com/trentonpulsipher/ancestryTest/blob/master/R_scripts/data_discovery_ancestryTest.html</a>. To summarize, the percentage of observed users cross-sell to subscription appears to have slowly increased from roughly 11% in mid 2013 to a peak of roughly 15% in mid 2016. As I explained at the end of my data discovery file, the drop in conversion percentage is a result of the time lag to cross-sell. That drop will likely always exist at the most recent point in time and eventually those daily percentages will increase as more time passes.</p>
+<p>If one was asked to predict cross-sell percentage today (or mid 2017 for the group of customers still in the “drop phase”) or even in the future I would start by fitting a linear regression model to the time series shown. I would limit the input data to be from mid 2013 to mid/late 2016. While there is at least one clear seasonal effect (strong dip every December), the variability appears relatively consistent so a simple linear model may be sufficient for an initial forecast. The next section will include plans to learn more about what is affecting this increasing cross-sell conversion and how one might generate the insights necessary to develop future experimentation opportunities.</p>
+<p><img src="/post/2018-11-15-ancestry-product-analytics-homework-assignment_files/figure-html/xsellOverall-1.png" width="912" /></p>
+<p>I have chosen to group by the <code>ordercreatedate</code>, thus calculating cross-sell conversion by date rather than by customer and date. The only reason for doing so is that the majority of customers (83.299%) only made one DNA kit purchase (and I am limited in analysis time).</p>
+</div>
+<div id="analytics-plan-to-derive-insights-identify-opportunities-and-recommend-any-optimization." class="section level3">
+<h3>2. Analytics plan to derive insights, identify opportunities, and recommend any optimization.</h3>
+<p>Generating insights may be as simple as some in-depth visualization, but modeling the data will provide more definitive value. For modeling, I recommend subsetting to relevant data (only customers that had <code>ordercreatedate</code>s between mid 2013 to mid 2016) and predicting the percent of cross-sell conversions. I would like to understood a little more about these other variables like <code>regtenure</code>, <code>dna_visittrafficsubtype</code>, <code>xsell_day_exact</code>, and even <code>customer_type_grp</code>. A deeper business awareness might help me know how to leverage those variables when modeling.</p>
+<p>Models we could use include any regression based methods or machine learning (ML) algorithms. ML is primarily beneficial when predicting, but we could choose one of the few algorithms where people have built explainer functions that derive the insight sought. Predictive capability in ML may be great, but we would likely lack the insight needed to approach future experimentation/adjustments to drive the conversion higher without some explanation.</p>
+<p>ML methods utilizing a logistic regression approach, where the response is if the customer converted to the cross-sell or not, would show a different viewpoint. This customer-centric approach will likely provide a unique perspective to marketings efforts, demographic/geographical importance, and the time to conversion. ML methods could obviously be applied here using classification-based, instead of regression-based algorithms.</p>
+<p>I see the two approaches as a way to answer the same questions from separate angles. Both may identify which customers (or when customers) are more likely to convert and why, and what are the effects of time-related seasonality and marketing interventions. Both would help build the story of what has worked in the past and what experimentation to use in the near future.</p>
+</div>
+<div id="experimentation-method-recommendations" class="section level3">
+<h3>3. Experimentation method recommendations</h3>
+<p>Let’s assume that the modeling effort revealed five influential variables, two from marketing efforts/touches, two from product features, and one that identified several customer segments. We might begin validating the impact of those five variables by splitting up the customer segments to then test the effects of the other four variables on those groups. Samples sizes and testing duration would be determined based on the effect desired/considered significant, the estimated variability, and acceptable error rates. The A/B testing environment will use the appropriate statistical tests (like two-sample proportion t-test for example) to determine experimentation significance. The decision to launch the new product, or in this case change the customer experience to increase cross-sells, would be determined after examining the outcome of the experiment as it relates to several options.</p>
+<p>Given various levels of evidence of success one might:</p>
+<ol style="list-style-type: decimal">
+<li>launch immediately,</li>
+<li>return to experimentation to try to find additional support/evidence in a way not previously experimented upon, or</li>
+<li>don’t implement the feature/product at this time.</li>
+</ol>
+<p>All options should consider costs (financial, code maintenance, failure or poor customer experience potential, etc.) and benefits (improved customer experience/engagement, future potential upsell opportunities, incremental revenue, etc.) associated with the decision. In some cases a future return to the same or very similar experiment might lead to a different outcome so creating a reproducible environment for future runs may prove valuable.</p>
+<p>Please let me know if you prefer I spend additional time to perform the modeling and explore experimentation recommendations in detail.</p>
+</div>
+
+</div>
+            <div class="footer">
+                <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+<script type="text/javascript">
+    hljs.configure({languages: []});
+    hljs.initHighlightingOnLoad();
+</script>
+
+
+            </div>
+        </div>
+        
+                
+    </body>
+</html>

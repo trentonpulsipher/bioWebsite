@@ -6,10 +6,20 @@
     <description>Recent content in Posts on Trenton Pulsipher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 15 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 15 Nov 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Ancestry Product Analytics Homework Assignment</title>
+      <link>/post/ancestry-product-analytics-homework-assignment/</link>
+      <pubDate>Thu, 15 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/ancestry-product-analytics-homework-assignment/</guid>
+      <description>The homework assignment document shared with me contained the following questions:
+Define the problem: What is the cross-sell status today based on the dataset? For example, what fraction of the observed users cross-sell to subscription? Perform any cleaning, exploratory analysis, and/or visualizations to use the provided data for this analysis (a few sentences/plots describing your approach will suffice). Discuss your analytics plan/steps to derive insights, identify opportunities, and recommend any optimization.</description>
+    </item>
     
     <item>
       <title>Stock Prices</title>

@@ -1,0 +1,144 @@
+---
+title: Ancestry Product Analytics Homework Assignment
+author: 'Trenton Pulsipher'
+date: '2018-11-15'
+slug: ancestry-product-analytics-homework-assignment
+categories: []
+tags: []
+---
+
+```{r settings, echo = F, warning = F, message = F, error = F}
+knitr::opts_chunk$set(
+  echo = F,
+  message = F,
+  warning = F,
+  error = F,
+  fig.height = 3,
+  fig.width = 9.5,
+  cache = F
+)
+
+# Libraries 
+library(lubridate)
+library(stopwords)
+library(tidyverse)
+library(trelliscopejs)
+library(wordcloud)
+library(HSPSUtils) # install_github("HSPS-DataScience/HSPSUtils")
+# devtools::update_packages("HSPSUtils")
+library(rbokeh)
+library(ggpubr)
+```
+
+
+```{r dataIn}
+# Read in Data
+data <- read_csv("~/Documents/Development/R/data/ancestryTest/take-home_exercise_data.csv") %>%
+  select(-X1) %>%
+  rename(customer_type_grp = customer_type_group)
+
+# fix the mislabeled regtenure 20 day group
+data$regtenure[data$regtenure == "<=20 day"] <- "<=20 days"
+
+# remove "bad" dates, add xsell identifier
+data <- data %>%
+  filter(ordercreatedate > "2000-01-01") %>%
+  # group_by(ordercreatedate) %>%
+  mutate(
+    xsell_120rule = if_else(xsell_day_exact <= 120, 1, 0),
+    xsell = if_else(xsell_120rule & xsell_gsa, 1, 0)
+  )
+
+```
+
+
+The [homework assignment document](ManagerProductAnalyticsHomeworkAssignment.pdf) shared with me contained the following questions:
+
+1. Define the problem: What is the cross-sell status today based on the dataset? For
+example, what fraction of the observed users cross-sell to subscription? Perform any
+cleaning, exploratory analysis, and/or visualizations to use the provided data for this
+analysis (a few sentences/plots describing your approach will suffice).
+2. Discuss your analytics plan/steps to derive insights, identify opportunities, and
+recommend any optimization. How Ancestry might leverage the insights gained from the
+analytics deliverable to improve?
+3. If you need to design an analytical framework to learn the impact of the abovementioned
+insights iteratively, what experimentation method would you use to verify the
+recommendations:
+    * How would you set up the experiment? Test vs. Control or other.
+    * What data or information is necessary to determine the sample size and duration
+of the experiment? Which metrics would you plan to track that define
+performance of the test?
+    * What method would you use to analyze the test results? Why?
+    * Based on your method, when would you be able to say that we can go ahead
+launch the new product?
+
+### 1. Define the problem and determine current cross-sell state
+
+My initial look at the data can be found [here](data_discovery_ancestryTest.html) or at https://github.com/trentonpulsipher/ancestryTest/blob/master/R_scripts/data_discovery_ancestryTest.html. To summarize, the percentage of observed users cross-sell to subscription appears to have slowly increased from roughly 11% in mid 2013 to a peak of roughly 15% in mid 2016. As I explained at the end of my data discovery file, the drop in conversion percentage is a result of the time lag to cross-sell. That drop will likely always exist at the most recent point in time and eventually those daily percentages will increase as more time passes. 
+
+If one was asked to predict cross-sell percentage today (or mid 2017 for the group of customers still in the "drop phase") or even in the future I would start by fitting a linear regression model to the time series shown. I would limit the input data to be from mid 2013 to mid/late 2016. While there is at least one clear seasonal effect (strong dip every December), the variability appears relatively consistent so a simple linear model may be sufficient for an initial forecast. The next section will include plans to learn more about what is affecting this increasing cross-sell conversion and how one might generate the insights necessary to develop future experimentation opportunities.
+
+```{r xsellOverall}
+g1 <- data %>%
+  group_by(ordercreatedate) %>%
+  summarise(PercentConverted = sum(xsell) / length(xsell)) %>%
+  mutate(ym = paste(year(ordercreatedate), month(ordercreatedate), "01", sep = "-")) %>%
+  group_by(ym) %>%
+  mutate(monthlyAvg = mean(PercentConverted)) %>%
+  ggplot(aes(x = ordercreatedate, y = PercentConverted)) +
+    geom_point(alpha = 0.25, color = "blue") +
+    geom_line(aes(y = monthlyAvg), size = .8) +
+    scale_y_continuous(limits = c(0,1), 
+                       breaks = seq(0,1,by=.2), 
+                       labels = paste0(seq(0,1,by=.2)*100, "%")) +
+    theme_bw() +
+    labs(x = "", title = "Complete dataset",
+         y = "% Conversion of DNA Orders to Xsell")
+# zoomed in version
+g2 <- data %>%
+  group_by(ordercreatedate) %>%
+  summarise(PercentConverted = sum(xsell) / length(xsell)) %>%
+  mutate(ym = paste(year(ordercreatedate), month(ordercreatedate), "01", sep = "-")) %>%
+  group_by(ym) %>%
+  mutate(monthlyAvg = mean(PercentConverted)) %>%
+  ggplot(aes(x = ordercreatedate, y = PercentConverted)) +
+    geom_point(alpha = 0.25, color = "blue") +
+    geom_line(aes(y = monthlyAvg), size = .8) +
+    scale_y_continuous(limits = c(0,.25), 
+                       breaks = seq(0,1,by=.02), 
+                       labels = paste0(seq(0,1,by=.02)*100, "%")) +
+    theme_bw() +
+    labs(x = "", title = "Zoomed-In View",
+         y = "% Conversion of DNA Orders to Xsell")
+
+ggarrange(g1, g2)
+```
+
+I have chosen to group by the `ordercreatedate`, thus calculating cross-sell conversion by date rather than by customer and date. The only reason for doing so is that the majority of customers (`r round(data %>% group_by(prospectid) %>% summarise(Count = n()) %>% mutate(gt1 = if_else(Count > 1, 0, 1)) %>% ungroup() %>% summarise(pct = sum(gt1) / length(gt1)) %>% pull() * 100, 3)`%) only made one DNA kit purchase (and I am limited in analysis time).
+
+
+### 2. Analytics plan to derive insights, identify opportunities, and recommend any optimization. 
+
+Generating insights may be as simple as some in-depth visualization, but modeling the data will provide more definitive value. For modeling, I recommend subsetting to relevant data (only customers that had `ordercreatedate`s between mid 2013 to mid 2016) and predicting the percent of cross-sell conversions. I would like to understood a little more about these other variables like `regtenure`, `dna_visittrafficsubtype`, `xsell_day_exact`, and even `customer_type_grp`. A deeper business awareness might help me know how to leverage those variables when modeling.
+
+Models we could use include any regression based methods or machine learning (ML) algorithms. ML is primarily beneficial when predicting, but we could choose one of the few algorithms where people have built explainer functions that derive the insight sought. Predictive capability in ML may be great, but we would likely lack the insight needed to approach future experimentation/adjustments to drive the conversion higher without some explanation.
+
+ML methods utilizing a logistic regression approach, where the response is if the customer converted to the cross-sell or not, would show a different viewpoint. This customer-centric approach will likely provide a unique perspective to marketings efforts, demographic/geographical importance, and the time to conversion. ML methods could obviously be applied here using classification-based, instead of regression-based algorithms.
+
+I see the two approaches as a way to answer the same questions from separate angles. Both may identify which customers (or when customers) are more likely to convert and why, and what are the effects of time-related seasonality and marketing interventions. Both would help build the story of what has worked in the past and what experimentation to use in the near future.
+
+
+### 3. Experimentation method recommendations
+
+Let's assume that the modeling effort revealed five influential variables, two from marketing efforts/touches, two from product features, and one that identified several customer segments. We might begin validating the impact of those five variables by splitting up the customer segments to then test the effects of the other four variables on those groups. Samples sizes and testing duration would be determined based on the effect desired/considered significant, the estimated variability, and acceptable error rates. The A/B testing environment will use the appropriate statistical tests (like two-sample proportion t-test for example) to determine experimentation significance. The decision to launch the new product, or in this case change the customer experience to increase cross-sells, would be determined after examining the outcome of the experiment as it relates to several options. 
+
+Given various levels of evidence of success one might:
+
+1. launch immediately, 
+2. return to experimentation to try to find additional support/evidence in a way not previously experimented upon, or 
+3. don't implement the feature/product at this time. 
+
+All options should consider costs (financial, code maintenance, failure or poor customer experience potential, etc.) and benefits (improved customer experience/engagement, future potential upsell opportunities, incremental revenue, etc.) associated with the decision. In some cases a future return to the same or very similar experiment might lead to a different outcome so creating a reproducible environment for future runs may prove valuable.
+
+
+Please let me know if you prefer I spend additional time to perform the modeling and explore experimentation recommendations in detail.
