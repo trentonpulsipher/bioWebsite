@@ -52,7 +52,7 @@ data <- data %>%
 ```
 
 
-The [homework assignment document](ManagerProductAnalyticsHomeworkAssignment.pdf) shared with me contained the following questions:
+The homework assignment document shared with me contained the following questions:
 
 1. Define the problem: What is the cross-sell status today based on the dataset? For
 example, what fraction of the observed users cross-sell to subscription? Perform any
